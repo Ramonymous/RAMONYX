@@ -31,16 +31,20 @@ export const SidebarAppearance = () => {
     <SidebarMenuItem>
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
-          <SidebarMenuButton tooltip="Appearance" data-testid="theme-button">
+          <SidebarMenuButton
+            tooltip="Appearance"
+            data-testid="theme-button"
+            className="h-8 rounded-sm border border-sidebar-border px-2 text-[0.68rem] uppercase tracking-widest text-sidebar-foreground/70"
+          >
             <Icon className="size-4 text-muted-foreground" />
-            <span>Appearance</span>
+            <span>Theme</span>
             <span className="sr-only">Toggle theme</span>
           </SidebarMenuButton>
         </DropdownMenuTrigger>
         <DropdownMenuContent
           side={isMobile ? "top" : "right"}
           align="end"
-          className="w-(--radix-dropdown-menu-trigger-width) min-w-56"
+          className="w-(--radix-dropdown-menu-trigger-width) min-w-44 rounded-sm border-sidebar-border"
         >
           <DropdownMenuItem
             data-testid="light-mode"

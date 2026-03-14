@@ -6,8 +6,15 @@ import { type UserPublic, UsersService } from "@/client"
 import AddUser from "@/components/Admin/AddUser"
 import { columns, type UserTableData } from "@/components/Admin/columns"
 import { DataTable } from "@/components/Common/DataTable"
+import {
+  Panel,
+  PanelBody,
+  PanelHeader,
+  PanelTitle,
+} from "@/components/Common/panel"
 import PendingUsers from "@/components/Pending/PendingUsers"
 import useAuth from "@/hooks/useAuth"
+import { getPageTitle } from "@/utils"
 
 function getUsersQueryOptions() {
   return {
@@ -29,7 +36,7 @@ export const Route = createFileRoute("/_layout/admin")({
   head: () => ({
     meta: [
       {
-        title: "Admin - FastAPI Template",
+        title: getPageTitle("Admin"),
       },
     ],
   }),
@@ -57,17 +64,28 @@ function UsersTable() {
 
 function Admin() {
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight">Users</h1>
-          <p className="text-muted-foreground">
-            Manage user accounts and permissions
-          </p>
-        </div>
-        <AddUser />
-      </div>
-      <UsersTable />
+    <div className="flex flex-col gap-3">
+      <Panel>
+        <PanelHeader className="gap-3 md:flex-row md:items-center md:justify-between md:gap-4">
+          <div className="space-y-1">
+            <PanelTitle className="text-base normal-case tracking-normal">
+              Users
+            </PanelTitle>
+            <p className="text-xs text-muted-foreground">
+              Manage user accounts and permissions
+            </p>
+          </div>
+          <div className="md:self-start">
+            <AddUser />
+          </div>
+        </PanelHeader>
+      </Panel>
+
+      <Panel>
+        <PanelBody className="p-2 md:p-3">
+          <UsersTable />
+        </PanelBody>
+      </Panel>
     </div>
   )
 }

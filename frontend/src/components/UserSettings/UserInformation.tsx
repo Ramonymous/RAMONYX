@@ -5,6 +5,12 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { UsersService, type UserUpdateMe } from "@/client"
+import {
+  Panel,
+  PanelBody,
+  PanelHeader,
+  PanelTitle,
+} from "@/components/Common/panel"
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -81,13 +87,16 @@ const UserInformation = () => {
   }
 
   return (
-    <div className="max-w-md">
-      <h3 className="text-lg font-semibold py-4">User Information</h3>
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="flex flex-col gap-4"
-        >
+    <Panel className="max-w-xl">
+      <PanelHeader>
+        <PanelTitle>User Information</PanelTitle>
+      </PanelHeader>
+      <PanelBody>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-col gap-4"
+          >
           <FormField
             control={form.control}
             name="full_name"
@@ -137,7 +146,7 @@ const UserInformation = () => {
             }
           />
 
-          <div className="flex gap-3">
+            <div className="flex gap-3">
             {editMode ? (
               <>
                 <LoadingButton
@@ -161,10 +170,11 @@ const UserInformation = () => {
                 Edit
               </Button>
             )}
-          </div>
-        </form>
-      </Form>
-    </div>
+            </div>
+          </form>
+        </Form>
+      </PanelBody>
+    </Panel>
   )
 }
 

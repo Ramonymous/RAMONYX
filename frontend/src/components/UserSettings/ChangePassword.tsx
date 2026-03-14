@@ -5,6 +5,12 @@ import { z } from "zod"
 
 import { type UpdatePassword, UsersService } from "@/client"
 import {
+  Panel,
+  PanelBody,
+  PanelHeader,
+  PanelTitle,
+} from "@/components/Common/panel"
+import {
   Form,
   FormControl,
   FormField,
@@ -66,13 +72,16 @@ const ChangePassword = () => {
   }
 
   return (
-    <div className="max-w-md">
-      <h3 className="text-lg font-semibold py-4">Change Password</h3>
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="flex flex-col gap-4"
-        >
+    <Panel className="max-w-xl">
+      <PanelHeader>
+        <PanelTitle>Change Password</PanelTitle>
+      </PanelHeader>
+      <PanelBody>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-col gap-4"
+          >
           <FormField
             control={form.control}
             name="current_password"
@@ -130,16 +139,17 @@ const ChangePassword = () => {
             )}
           />
 
-          <LoadingButton
-            type="submit"
-            loading={mutation.isPending}
-            className="self-start"
-          >
-            Update Password
-          </LoadingButton>
-        </form>
-      </Form>
-    </div>
+            <LoadingButton
+              type="submit"
+              loading={mutation.isPending}
+              className="self-start"
+            >
+              Update Password
+            </LoadingButton>
+          </form>
+        </Form>
+      </PanelBody>
+    </Panel>
   )
 }
 

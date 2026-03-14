@@ -1,6 +1,12 @@
 import { AxiosError } from "axios"
 import type { ApiError } from "./client"
 
+export const APP_NAME = import.meta.env.VITE_APP_NAME?.trim() || "RAMONYX"
+
+export const getPageTitle = (pageTitle?: string): string => {
+  return pageTitle ? `${pageTitle} - ${APP_NAME}` : APP_NAME
+}
+
 function extractErrorMessage(err: ApiError): string {
   if (err instanceof AxiosError) {
     return err.message

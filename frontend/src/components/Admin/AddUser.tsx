@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { type UserCreate, UsersService } from "@/client"
+import { PanelActionButton } from "@/components/Common/PanelActionButton"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
@@ -92,14 +93,14 @@ const AddUser = () => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button className="my-4">
+        <PanelActionButton>
           <Plus className="mr-2" />
           Add User
-        </Button>
+        </PanelActionButton>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md rounded-sm border-border bg-card">
         <DialogHeader>
-          <DialogTitle>Add User</DialogTitle>
+          <DialogTitle className="text-base uppercase tracking-wide">Add User</DialogTitle>
           <DialogDescription>
             Fill in the form below to add a new user to the system.
           </DialogDescription>
@@ -220,11 +221,11 @@ const AddUser = () => {
 
             <DialogFooter>
               <DialogClose asChild>
-                <Button variant="outline" disabled={mutation.isPending}>
+                <Button variant="outline" disabled={mutation.isPending} className="rounded-sm border-border">
                   Cancel
                 </Button>
               </DialogClose>
-              <LoadingButton type="submit" loading={mutation.isPending}>
+              <LoadingButton type="submit" loading={mutation.isPending} className="rounded-sm">
                 Save
               </LoadingButton>
             </DialogFooter>

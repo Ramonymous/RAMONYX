@@ -1,5 +1,6 @@
 import { FaGithub, FaLinkedinIn } from "react-icons/fa"
 import { FaXTwitter } from "react-icons/fa6"
+import { APP_NAME } from "@/utils"
 
 const socialLinks = [
   {
@@ -19,10 +20,10 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="border-t py-4 px-6">
+    <footer className="border-t border-border/65 py-4 px-6">
       <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
         <p className="text-muted-foreground text-sm">
-          Full Stack FastAPI Template - {currentYear}
+          {APP_NAME} Dashboard - {currentYear}
         </p>
         <div className="flex items-center gap-4">
           {socialLinks.map(({ icon: Icon, href, label }) => (
